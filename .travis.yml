@@ -1,0 +1,35 @@
+language: python
+dist: trusty
+sudo: false
+
+cache:
+  apt: true
+  pip: true
+  ccache: true
+
+addons:
+  apt:
+    packages:
+      - cppcheck
+
+python:
+  - 2.7
+  - 3.6
+os:
+  - linux
+  - osx
+
+before_install:
+  - set -e
+  - command -v cppcheck >/dev/null &&
+    cppcheck --enable=all --error-exitcode=1 multicore_tsne/*.{h,c,cpp}
+
+install:
+  - pip install -e .
+  - pip install .[test]
+
+script:
+  - python setup.py test
+
+after_success:
+  -
