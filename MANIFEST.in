@@ -1,1 +1,1 @@
-include MulticoreTSNE/libtsne_multicore.so
+recursive-include MulticoreTSNE *.so *.dll *.dylib
