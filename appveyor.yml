@@ -11,13 +11,13 @@ max_jobs: 21
 environment:
   fast_finish: true
   matrix:
-    - PYTHON: "C:\\Python27-x64"
     - PYTHON: "C:\\Python36-x64"
 
 install:
   - "%PYTHON%\\python.exe -m pip install -U pip setuptools wheel"
-  - "%PYTHON%\\python.exe -m pip install ."
-  - "%PYTHON%\\python.exe -m pip install .[test]"
+  - "%PYTHON%\\python.exe -m pip install -e ."
+  - "%PYTHON%\\python.exe -m pip install scikit-learn"
+  - "%PYTHON%\\python.exe -m pip install https://pypi.python.org/packages/ed/23/cc831da308cf4f7e319c73e32197a1204daed6ce8c76c741fcaf1903c489/scipy-1.0.0rc2-cp36-none-win_amd64.whl#md5=9184ee5f1dd5745e42901b0a9de40373"
 
 build: off
 
