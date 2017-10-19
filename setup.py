@@ -51,10 +51,10 @@ class CMakeBuild(build_ext):
         if 0 != execute(cmd, shell=True, cwd=BUILD_TEMP):
             sys.exit('\nERROR: Cannot find make? See above errors.')
 
-        print('dir {}/{}'.format(BUILD_TEMP, build_type), file=sys.stderr)
-        os.system('dir {}/{}'.format(BUILD_TEMP, build_type))
-        print('dir {}{}'.format(EXT_DIR, build_type), file=sys.stderr)
-        os.system('dir {}{}'.format(EXT_DIR, build_type))
+        print('dir {}\\{}'.format(BUILD_TEMP, build_type), file=sys.stderr)
+        os.system('dir {}\\{}'.format(BUILD_TEMP, build_type))
+        print('dir {}\\{}'.format(EXT_DIR, build_type), file=sys.stderr)
+        os.system('dir {}\\{}'.format(EXT_DIR, build_type))
 
 
 if __name__ == '__main__':
