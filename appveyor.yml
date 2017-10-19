@@ -15,14 +15,14 @@ environment:
 
 install:
   - "%PYTHON%\\python.exe -m pip install -U pip setuptools wheel"
-  - "%PYTHON%\\python.exe -m pip install -e ."
-  - "%PYTHON%\\python.exe -m pip install scikit-learn"
-  - "%PYTHON%\\python.exe -m pip install https://pypi.python.org/packages/ed/23/cc831da308cf4f7e319c73e32197a1204daed6ce8c76c741fcaf1903c489/scipy-1.0.0rc2-cp36-none-win_amd64.whl#md5=9184ee5f1dd5745e42901b0a9de40373"
+  - "%PYTHON%\\python.exe -m pip install ."
+  - "%PYTHON%\\python.exe -m pip install -v --no-deps ."
+  - "%PYTHON%\\python.exe -m pip install --pre scipy scikit-learn"
 
 build: off
 
 test_script:
-  - "%PYTHON%\\python.exe setup.py test"
+  - "pushd .. & %PYTHON%\\python.exe -m unittest discover MulticoreTSNE.tests & popd"
 
 after_test:
   - "%PYTHON%\\python.exe setup.py bdist_wheel"
