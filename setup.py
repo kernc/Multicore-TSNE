@@ -51,6 +51,11 @@ class CMakeBuild(build_ext):
         if 0 != execute(cmd, shell=True, cwd=BUILD_TEMP):
             sys.exit('\nERROR: Cannot find make? See above errors.')
 
+        print('dir {}'.format(BUILD_TEMP), file=sys.stderr)
+        os.system('dir {}'.format(BUILD_TEMP))
+        print('dir {}'.format(EXT_DIR), file=sys.stderr)
+        os.system('dir {}'.format(EXT_DIR))
+
 
 if __name__ == '__main__':
     EXT_MODULES = []
