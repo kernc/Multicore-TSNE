@@ -21,13 +21,19 @@ environment:
       CMAKE_OPTIONS: -DCMAKE_CXX_COMPILER=clang-cl.exe
 
 install:
+  - "set CMAKE_EXTRA_OPTIONS=-DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cl.exe"
+  - "set CXX=clang-cl.exe"
   - "set PATH=%PYTHON%;%PATH%"
+  - "clang-cl -v"
   - "python -m pip install -U pip setuptools wheel"
   - "python -m pip install ."
   - "python -m pip install -v --no-deps ."
   - "python -m pip install --pre scipy scikit-learn"
 
-build: off
+build:
+  verbosity: detailed
+#configuration:
+#  - Release
 
 test_script:
   - "pushd .. & python -m unittest discover MulticoreTSNE.tests & popd"
