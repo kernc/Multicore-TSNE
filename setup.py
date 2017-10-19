@@ -40,6 +40,7 @@ class CMakeBuild(build_ext):
                          '-DCMAKE_BUILD_TYPE={}'.format(build_type),
                          '-DCMAKE_VERBOSE_MAKEFILE={}'.format(int(self.verbose)),
                          "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY='{}'".format(EXT_DIR),
+                         '-DCMAKE_CXX_COMPILER=C:\\LLVM\\bin\\clang-cl.exe',
                          SOURCE_DIR], cwd=BUILD_TEMP):
             sys.exit('\nERROR: Cannot generate Makefile. See above errors.')
 
