@@ -8,21 +8,29 @@ skip_tags: false
 #skip_non_tags: true
 max_jobs: 21
 
+notifications:
+  - provider: Email
+    on_build_success: false
+    on_build_failure: false
+    on_build_status_changed: false
+
 environment:
   fast_finish: true
   matrix:
     - PYTHON: "C:\\Python36-x64"
+      CMAKE_OPTIONS: -DCMAKE_CXX_COMPILER=clang-cl.exe
 
 install:
-  - "%PYTHON%\\python.exe -m pip install -U pip setuptools wheel"
-  - "%PYTHON%\\python.exe -m pip install ."
-  - "%PYTHON%\\python.exe -m pip install -v --no-deps ."
-  - "%PYTHON%\\python.exe -m pip install --pre scipy scikit-learn"
+  - "set PATH=%PYTHON%;%PATH%"
+  - "python -m pip install -U pip setuptools wheel"
+  - "python -m pip install ."
+  - "python -m pip install -v --no-deps ."
+  - "python -m pip install --pre scipy scikit-learn"
 
 build: off
 
 test_script:
-  - "pushd .. & %PYTHON%\\python.exe -m unittest discover MulticoreTSNE.tests & popd"
+  - "pushd .. & python -m unittest discover MulticoreTSNE.tests & popd"
 
 after_test:
   - "%PYTHON%\\python.exe setup.py bdist_wheel"
