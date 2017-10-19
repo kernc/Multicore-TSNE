@@ -21,9 +21,14 @@ environment:
       CMAKE_OPTIONS: -DCMAKE_CXX_COMPILER=clang-cl.exe
 
 install:
+  - "call 'C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\vcvarsall.bat' x86_amd64"
   - "set CXX=C:\\LLVM\\bin\\clang-cl.exe"
   - "set CC=C:\\LLVM\\bin\\clang-cl.exe"
-  - "set PATH=%PYTHON%;%PATH%"
+  - "set PATH=C:\\LLVM\\bin;%PYTHON%;%PATH%"
+  - "call 'C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\vcvarsall.bat' x86_amd64"
+  - "set CXX=C:\\LLVM\\bin\\clang-cl.exe"
+  - "set CC=C:\\LLVM\\bin\\clang-cl.exe"
+  - "set PATH=C:\\LLVM\\bin;%PYTHON%;%PATH%"
   - "clang-cl -v"
   - "python -m pip install -U pip setuptools wheel"
   - "python -m pip install ."
